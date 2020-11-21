@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     red net;
-    string archivo_natural= "nuevo archivo.txt";
+    string archivo_natural= "archivo.txt";
     int decision=1, costo=0;
     char enrutador1, enrutador2;
 

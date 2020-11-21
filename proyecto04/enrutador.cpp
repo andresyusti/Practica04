@@ -42,7 +42,7 @@ void enrutador::imprimir_tabla(){
 
 string enrutador::numero_menor(string camino, map<char, int> *router_suma){
     //enrutador router_suma;
-    int menor=router.begin()->first;
+    int menor=999999;
     char letra;
     red net;
 
