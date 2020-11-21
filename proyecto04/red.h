@@ -11,8 +11,13 @@ private:
     map<char,enrutador>::iterator it;
     map<char,int> net_corto;
     map<char,int>::iterator itc;
+    map<char, int> router_suma;
+    map<char, int>::iterator its;
 
 public:
+   int getNumero(char numero, map<char, int> &router_suma);
+   void cambiar_numero(char letra, int numero1, int numero2, map<char, int> &router_suma);
+   void sumar_numero(char letra, char numero, map<char, int> &router_suma);
    void leer_archivo(string archivo);
    void agregar_enrutador(char nombre, bool cond);
    bool eliminar_enrutador(char nombre);

@@ -1,5 +1,18 @@
 #include "red.h"
 
+int red::getNumero(char letra, map<char, int> &router_suma)
+{
+    int numero=router_suma[letra];
+    return numero;
+}
+
+void red::cambiar_numero(char letra, int numero1, int numero2, map<char, int> &router_suma){
+    router_suma[letra]=numero1+numero2;
+}
+
+void red::sumar_numero(char letra, char numero, map<char, int> &router_suma){
+    router_suma[letra]+=numero;
+}
 
 
 void red::tabla_conexiones(){
@@ -129,15 +142,26 @@ void red::leer_archivo(string archivo){
 
 
 
-/*void red::ruta_corta(char nombre1, char nombre2){
+void red::ruta_corta(char nombre1, char nombre2){
+
     enrutador router;
-    int menor=0, letra=nombre1;
-    while(true){
-        router=net[letra];
-        menor, letra=router.numero_menor(menor);
-        if(letra==nombre2) break;
+    char ultimo_visto;
+    string camino;
+
+
+
+    camino.push_back(nombre1);
+    for(ultimo_visto=camino.back();ultimo_visto!=nombre2;ultimo_visto=camino.back()){
+        router=net[camino.back()];
+        camino=router.numero_menor(camino, &router_suma);
+
+        //router_suma=router;
     }
+    cout << "\nEl camino de (" << nombre1 << ") A (" << nombre2 << ") es de: " << router_suma[nombre2];
 
-}*/
+    router_suma[camino.back()];
 
+    cout << "\nCamino:\t" << camino << endl;
+    //net[nombre1]=router_suma;
+}
 

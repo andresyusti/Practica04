@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     red net;
-    string archivo_natural= "archivo.txt";
+    string archivo_natural= "nuevo archivo.txt";
     int decision=1, costo=0;
     char enrutador1, enrutador2;
 
@@ -13,7 +13,7 @@ int main()
     while(decision!=0){
         cout << "\nIngresar:\n1. Ver tablas de enrutadores.\n2. Ver tabla de un enrutador.\n3. Agregar enrutador.\n4. Eliminar enrutador.";
         cout << "\n5. Conectar o desconectar enrutadores.\n6. Conocer costo de envio.\n7. agregar enrutadores atraves de un archivo.";
-        cout << "\nSeleccion una opcion: ";
+        cout << "\n8. Generar nodos ramdon.\nSeleccion una opcion: ";
         cin >> decision;
         switch (decision){
             case 1:{
@@ -54,12 +54,38 @@ int main()
             case 6:{
                 cout << "Ingresar enrutador inicial: "; cin >> enrutador1;
                 cout << "ingresar enrutador final: "; cin >> enrutador2;
+                net.ruta_corta(enrutador1,enrutador2);
 
             }
             break;
 
             case 7:{
                 net.leer_archivo(archivo_natural);
+            }
+            break;
+
+            case 8:{
+                int numero_generar;
+                string nuevo_archivo;
+                string numero;
+                char letra1, letra2;
+                cout << "ingresar la cantidad de nodos que desea generar, maximo 20: ";
+                cin >> numero_generar;
+                srand(time(NULL));
+
+                for (int i=0;i<=numero_generar;i++){
+                    letra1=(rand()%(25))+65;
+                    letra2=(rand()%(25))+65;
+                    if (letra1==letra2) letra2=(rand()%(25))+65;
+                    numero=to_string(rand()%(101));
+                    nuevo_archivo=nuevo_archivo+letra1+' '+letra2+' '+numero;
+                    if (i!=numero_generar) nuevo_archivo+='\n';
+                }
+                fstream k("nuevo archivo.txt", fstream::out | fstream::binary);
+                //k.write(nuevo_archivo.c_str(), nuevo_archivo.length());
+                k<<nuevo_archivo;
+                k.close();
+                net.leer_archivo("nuevo archivo.txt");
             }
             break;
 

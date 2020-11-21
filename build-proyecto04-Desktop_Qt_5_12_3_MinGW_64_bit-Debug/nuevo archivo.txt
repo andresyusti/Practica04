@@ -1,0 +1,16 @@
+G R 9
+C J 90
+O J 38
+W J 26
+R Q 29
+A O 88
+Q E 48
+C A 23
+J N 63
+O N 43
+Q F 60
+A J 24
+R H 92
+A K 5
+D T 7
+H R 85
