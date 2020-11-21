@@ -65,21 +65,27 @@ int main()
             break;
 
             case 8:{
-                int numero_generar;
+                int numero_generar, i, l1, l2;
                 string nuevo_archivo;
                 string numero;
-                char letra1, letra2;
                 cout << "ingresar la cantidad de nodos que desea generar, maximo 20: ";
                 cin >> numero_generar;
+                char letra1[numero_generar], letra2[numero_generar];
                 srand(time(NULL));
 
-                for (int i=0;i<=numero_generar;i++){
-                    letra1=(rand()%(25))+65;
-                    letra2=(rand()%(25))+65;
-                    if (letra1==letra2) letra2=(rand()%(25))+65;
-                    numero=to_string(rand()%(101));
-                    nuevo_archivo=nuevo_archivo+letra1+' '+letra2+' '+numero;
-                    if (i!=numero_generar) nuevo_archivo+='\n';
+
+                for (i=0;i<=numero_generar;i++){
+                    letra1[i]=((rand()%(25))+65);
+                    letra2[i]=((rand()%(25))+65);
+                }
+
+                for (i=0;i<=(numero_generar*10);i++){
+                //if (letra1==letra2) letra2=(rand()%(25))+65;
+                numero=to_string(rand()%(101));
+                l1=rand()%(numero_generar);
+                l2=rand()%(numero_generar);
+                if (letra1[l1]!=letra2[l2]) nuevo_archivo=nuevo_archivo+letra1[l1]+' '+letra2[l2]+' '+numero;
+                if (i!=numero_generar*10) nuevo_archivo+='\n';
                 }
                 fstream k("nuevo archivo.txt", fstream::out | fstream::binary);
                 //k.write(nuevo_archivo.c_str(), nuevo_archivo.length());
